@@ -6,7 +6,6 @@ name: Test CI java 11 - angular 14
 on:
   push:
     branches:
-      - main
       - franck-g75-patch-2/**
     
 jobs:
@@ -25,11 +24,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+        cache: npm
         cache-dependency-path: front/package-lock.json
         
     - run: npm ci
