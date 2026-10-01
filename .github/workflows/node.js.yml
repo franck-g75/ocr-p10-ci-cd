@@ -36,6 +36,4 @@ jobs:
     - run: npm run build --if-present
     #lancer les tests prédéfinis
     - run: npm run test-ci
-    
-
 
