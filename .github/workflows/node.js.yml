@@ -3,9 +3,9 @@ name: Test CI - angular 14
 
 on:
   push:
-    branches: [ "franck-g75-TestCI-java11-angular14" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "franck-g75-TestCI-java11-angular14" ]
+    branches: [ "main" ]
 
 jobs:
   build:
