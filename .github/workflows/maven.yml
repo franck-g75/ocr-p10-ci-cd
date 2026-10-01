@@ -1,6 +1,6 @@
 #building and testing java11
 
-name: Java CI with Maven
+name: Test CI with Maven java 11
 
 on:
   push:
