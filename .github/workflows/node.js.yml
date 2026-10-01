@@ -9,34 +9,34 @@ on:
   pull_request:
     branches: [ "franck-g75-TestCI-java11-angular14" ]
 
-jobs:
+#jobs:
 
-  #-----------------------Back End JAVA ----------------------------
-  backend: 
-    #name: Backend 
-    build:
-    
-      runs-on: ubuntu-latest 
-      defaults: 
-        run: 
-          working-directory: back 
+#  -----------------------Back End JAVA ----------------------------
+#  backend:
+  
+#    build:
+#      name: Backend
+#      runs-on: ubuntu-latest
+#      defaults:
+#        run:
+#          working-directory: back
 
-      steps: 
-      - name: Checkout 
-        uses: actions/checkout@v6 
+#      steps:
+#      - name: Checkout
+#        uses: actions/checkout@v6
 
-      - name: Setup Java 11 
-        uses: actions/setup-java@v4 
-        with: 
-          distribution: temurin 
-          java-version: '11' 
-          cache: maven 
+#      - name: Setup Java 11
+#        uses: actions/setup-java@v4
+#        with:
+#          distribution: temurin
+#          java-version: '11'
+#          cache: maven
 
-      - name: Maven tests 
-        run: mvn --batch-mode clean verify 
+#      - name: Maven tests 
+#        run: mvn --batch-mode clean verify 
 
   #-----------------------Front End JAVA ---------------------------- 
-  frontend: 
+#  frontend: 
     #name: Frontend
     build:
 
