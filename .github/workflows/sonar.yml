@@ -43,9 +43,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Important pour que Sonar puisse analyser l'historique de Git
-	
+        with: # Important pour que Sonar puisse analyser l'historique de Git
+          fetch-depth: 0 
       - name: Analyze with SonarQube
         # You can pin the exact commit or the version.
         # uses: SonarSource/sonarqube-scan-action@v1.1.0
