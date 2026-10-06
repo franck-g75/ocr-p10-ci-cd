@@ -32,15 +32,15 @@ jobs:
       # SECTION FRONTEND (Angular)
       # ----------------------------------------------------
       # You'll need to make sure node is installed first
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-          cache-dependency-path: front/package-lock.json
+      #- name: Use Node.js ${{ matrix.node-version }}
+      #  uses: actions/setup-node@v4
+      #  with:
+      #    node-version: ${{ matrix.node-version }}
+      #    cache: 'npm'
+      #    cache-dependency-path: front/package-lock.json
 
-      - name: Install yarn
-        run: npm install -g yarn
+      #- name: Install yarn
+      #  run: npm install -g yarn
   
       - name: Build and push Frontend image
         uses: docker/build-push-action@v7
@@ -50,8 +50,8 @@ jobs:
           push: true
           
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/franck-g75_ocr-p10-ci-cd_front:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          #cache-from: type=gha
+          #cache-to: type=gha,mode=max
 
       # ----------------------------------------------------
       # SECTION BACKEND (Java / Spring Boot)
