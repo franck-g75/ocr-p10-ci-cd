@@ -38,9 +38,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: front/package-lock.json
 
-      - name: Install yarn
-        run: npm install -g yarn
-  
       - name: Build and push Frontend image
         uses: docker/build-push-action@v7
         with:
