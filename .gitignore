@@ -7,6 +7,8 @@ node_modules/
 dist/
 coverage/
 
+**/.DS_Store
+
 ### STS ###
 .apt_generated
 .classpath
