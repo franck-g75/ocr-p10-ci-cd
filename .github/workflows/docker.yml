@@ -9,6 +9,10 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [14.21.x]
+        
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -28,10 +32,12 @@ jobs:
       # SECTION FRONTEND (Angular)
       # ----------------------------------------------------
       # You'll need to make sure node is installed first
-      - name: Install Node
-        uses: actions/setup-node@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
         with:
-          node-version-file: '14.21.x'
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: front/package-lock.json
 
       - name: Install yarn
         run: npm install -g yarn
