@@ -7,7 +7,7 @@ COPY src /workspace/src
 RUN mvn -B -f pom.xml clean package -DskipTests
 
 #Demarrage du projet
-FROM openjdk:11-jdk-slim
+FROM eclipse-temurin:11-jdk
 
 COPY --from=build /workspace/target/*.jar app.jar
 EXPOSE 8080
