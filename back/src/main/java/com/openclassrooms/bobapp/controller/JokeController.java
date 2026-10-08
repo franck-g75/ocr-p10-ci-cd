@@ -10,7 +10,7 @@ import com.openclassrooms.bobapp.service.JokeService;
 
 @RestController
 @RequestMapping("api/joke")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost")
 public class JokeController {
 
     private final JokeService jokeService;
