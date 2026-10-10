@@ -3,8 +3,9 @@ FROM node:latest as build
 WORKDIR /usr/local/app
 COPY ./ /usr/local/app/
 
-# Install all the dependencies (au lieu de RUN yarn)
-RUN npm ci
+# Install all the dependencies (au lieu de RUN yarn qui est inconnu dans le conteneur)
+RUN npm ci --ignore-scripts
+#Omitting "--ignore-scripts" allows lifecycle scripts to run during package installation.
 
 # Generate the build of the application
 RUN npm run build
