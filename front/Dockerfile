@@ -4,7 +4,7 @@ WORKDIR /usr/local/app
 COPY ./ /usr/local/app/
 
 # Install all the dependencies (au lieu de RUN yarn)
-RUN npm install
+RUN npm ci
 
 # Generate the build of the application
 RUN npm run build
