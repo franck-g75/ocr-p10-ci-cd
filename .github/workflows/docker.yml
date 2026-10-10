@@ -46,8 +46,8 @@ jobs:
           push: true
           
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/franck-g75_ocr-p10-ci-cd_front:latest
-          #cache-from: type=gha
-          #cache-to: type=gha,mode=max
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       # ----------------------------------------------------
       # SECTION BACKEND (Java / Spring Boot)
