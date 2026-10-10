@@ -9,11 +9,12 @@ RUN mvn -B -f pom.xml clean package -DskipTests
 #Demarrage du projet
 FROM eclipse-temurin:11-jdk
 #The "eclipse-temurin" image runs with "root" as the default user. Make sure it is safe here.
-#ARG JAR_FILE=/workspace/target/*.jar
+
 RUN mkdir /home/nobody
 WORKDIR /home/nobody
-#COPY ${JAR_FILE} app.jar
+
 COPY --from=build /workspace/target/*.jar app.jar
+
 USER 65534
 
 EXPOSE 8080
