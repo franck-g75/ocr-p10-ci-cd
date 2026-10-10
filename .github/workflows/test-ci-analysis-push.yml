@@ -8,7 +8,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  name: build and test angular
+  #name: build and test angular
   build-angular:
 
     runs-on: ubuntu-latest
@@ -38,7 +38,7 @@ jobs:
     #lancer les tests prédéfinis
     - run: npm run test-ci
   
-  name: build and test java
+  #name: build and test java
   build-java:
 
     runs-on: ubuntu-latest
@@ -58,7 +58,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
   
-  name: sonaQube analysis
+  #name: sonaQube analysis
   Analysis:
     runs-on: ubuntu-latest
     
@@ -92,7 +92,7 @@ jobs:
             # Adds more detail to both client and server-side analysis logs, activating DEBUG mode for the scanner, and adding client-side environment variables and system properties to the server-side log of analysis report processing.
             #-Dsonar.verbose= # optional, default is false
   
-  name: build and push to dockerHub
+  #name: build and push to dockerHub
   build-and-push:
     runs-on: ubuntu-latest
 
