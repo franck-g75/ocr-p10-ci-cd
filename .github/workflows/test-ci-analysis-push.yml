@@ -57,10 +57,11 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+    #compilation, test et empaquetage en .jar du projet back
     - name: Build with Maven
       run: mvn -B package --file pom.xml
   
-  #name: sonaQube analysis
+  #name: sonarQube analysis
   Analysis:
     runs-on: ubuntu-latest
     
