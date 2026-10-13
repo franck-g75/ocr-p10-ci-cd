@@ -102,9 +102,6 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   
-  
-  
-  
   #name: build and push to dockerHub
   build-and-push:
     runs-on: ubuntu-latest
