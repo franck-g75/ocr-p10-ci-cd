@@ -1,7 +1,7 @@
 
 name: Test CI - quality - push 
 
-#déclencheurs sur la branche main coucou
+#déclencheurs sur la branche main Kikou
 on:
   push:
     branches: [ "main" ]
