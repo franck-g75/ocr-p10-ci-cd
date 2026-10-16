@@ -39,6 +39,12 @@ jobs:
     - run: npm run build --if-present
     #lancer les tests prédéfinis
     - run: npm run test-ci
+    
+    - name: Upload Angular coverage
+      uses: actions/upload-artifact@v4
+      with:
+        name: angular-coverage
+        path: front/coverage
   
   #name: build and test java
   build-java:
@@ -59,7 +65,12 @@ jobs:
         cache: maven
     #compilation, test et empaquetage en .jar du projet back
     - name: Build with Maven
-      run: mvn -B package --file pom.xml org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Pcoverage
+      run: mvn -B package --file pom.xml -Pcoverage
+    - name: Upload JaCoCo report
+      uses: actions/upload-artifact@v4
+      with:
+        name: jacoco-report
+        path: back/target/site/jacoco  
   
   #name: sonarQube analysis
   Analysis:
@@ -72,6 +83,19 @@ jobs:
         uses: actions/checkout@v4
         with: # Important pour que Sonar puisse analyser l'historique de Git
           fetch-depth: 0 
+
+      - name: Download Angular coverage
+        uses: actions/download-artifact@v4
+        with:
+          name: angular-coverage
+          path: front/coverage
+
+      - name: Download JaCoCo report
+        uses: actions/download-artifact@v4
+        with:
+          name: jacoco-report
+          path: back/target/site/jacoco
+    
       - name: Analyze with SonarQube
         # You can pin the exact commit or the version.
         # uses: SonarSource/sonarqube-scan-action@v1.1.0
@@ -86,14 +110,15 @@ jobs:
             # Unique key of your project. You can find it in SonarQube > [my project] > Project Information (top-right menu)
             # mandatory
             -Dsonar.projectKey=franck-g75_ocr-p10-ci-cd
+            -Dsonar.organization=franck-g75
+            -Dsonar.javascript.lcov.reportPaths=front/coverage/lcov.info
+            -Dsonar.coverage.jacoco.xmlReportPaths=back/target/site/jacoco/jacoco.xml
             # Comma-separated paths to directories containing main source files.
             #-Dsonar.sources= # optional, default is project base directory
             # When you need the analysis to take place in a directory other than the one from which it was launched
             #-Dsonar.projectBaseDir= # optional, default is .
             # Comma-separated paths to directories containing test source files.
             #-Dsonar.tests= # optional. For more info about Code Coverage, please refer to https://docs.sonarcloud.io/enriching/test-coverage/overview/
-            #-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
-            #-Dsonar.coverage.jacoco.xmlReportPaths=.target/site/jacoco/jacoco.xml
             # Adds more detail to both client and server-side analysis logs, activating DEBUG mode for the scanner, and adding client-side environment variables and system properties to the server-side log of analysis report processing.
             #-Dsonar.verbose= # optional, default is false
             
