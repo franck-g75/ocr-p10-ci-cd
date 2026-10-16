@@ -35,13 +35,13 @@ jobs:
     
     #installation des dépendances
     - run: npm ci
-    - name: Check coverage
-      run: |
-        ls -R coverage
     #build de la solution
     - run: npm run build --if-present
     #lancer les tests prédéfinis
     - run: npm run test-ci
+    - name: Check coverage
+      run: |
+        ls -R coverage
     #charger le coverage en vue de le télécharger après
     - name: Upload Angular coverage
       uses: actions/upload-artifact@v4
