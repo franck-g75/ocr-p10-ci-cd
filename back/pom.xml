@@ -17,7 +17,7 @@
 		<java.version>11</java.version>
 		<sonar.organization>franck-g75</sonar.organization>
 		<sonar.projectKey>ocr-p10-ci-cd</sonar.projectKey>
-		
+		<sonar.token>${env.SONAR_TOKEN}</sonar.token>
 	</properties>
 	<dependencies>
 		<dependency>
